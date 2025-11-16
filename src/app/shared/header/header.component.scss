@@ -1,0 +1,257 @@
+
+/* =========================
+   PALETA NEON TECH GREEN
+   ========================= */
+$bg-dark: #0a0f0a;              // Verde-negruzco muy profundo
+$text-light: #e8f5e9;           // Verde muy claro suave (casi blanco)
+
+$accent: #22c55e;               // Verde neon (emerald 500)
+$accent-strong: #4ade80;        // Verde brillante (glow)
+
+$card-bg: #101b10;              // Verde oscuro
+$card-bg-2: #0f1a14;            // Alternativa para secciones profundas
+
+$line-soft: #1f3d2b;
+$line-strong: #2dd46d;
+
+/* Muted text / secondary */
+$muted: rgba(232,245,233,0.6);  // uso para textos secundarios
+
+/* Gradientes / glow */
+$glow-green: radial-gradient(circle, rgba(34,197,94,0.25) 0%, rgba(10,15,10,0) 70%);
+$glow-strong: radial-gradient(circle, rgba(74,222,128,0.35) 0%, rgba(10,15,10,0) 75%);
+
+/* =========================
+   GLOBAL / UTILITIES
+   ========================= */
+:root {
+  background-color: $bg-dark;
+  color: $text-light;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1, h2, h3 {
+  color: $text-light;
+  font-weight: 600;
+  margin: 0 0 0.6rem 0;
+}
+
+p.banner {
+  color: $muted;
+  line-height: 1.7;
+}
+
+a { text-decoration: none; }
+
+/* Fade-in */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* HEADER: comportamiento invertido (fijo arriba, transparente al scrollear)
+   Usa las variables de tu paleta Neon Tech Green definidas globalmente.
+*/
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  transition: background 320ms ease, box-shadow 320ms ease, border-color 320ms ease;
+  will-change: background, box-shadow;
+
+  /* Fondo sólido cuando estamos en TOP (scrolled = false) */
+  background: $card-bg-2; /* sólido, consistente con tu paleta */
+  border-bottom: 1px solid rgba(45,212,109,0.03); /* borde muy sutil */
+}
+
+/* Cuando hacemos scroll: TRANSLUCIDO / GLASS */
+.site-header.scrolled {
+  /* efecto glass / transparente */
+  background: $bg-dark;//linear-gradient(180deg, rgba(10,15,10,0.28), rgba(10,15,10,0.16));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  /* sombra más ligera para separar contenidos */
+  box-shadow: 0 6px 30px rgba(2,6,2,0.55);
+
+  /* borde más sutil en scrolled (o quitar) */
+  border-bottom: 1px solid rgba(34,197,94,0.03);
+}
+
+/* Header inner kept similar */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+}
+
+/* Brand / Logo */
+.brand .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: $text-light;
+  font-weight: 700;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(74,222,128,0.04));
+  color: $accent;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(34,197,94,0.04);
+}
+
+/* Desktop nav */
+.nav-desktop {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.nav-desktop a {
+  color: $muted;
+  font-weight: 600;
+  padding: 0.55rem 0.6rem;
+  border-radius: 8px;
+  transition: background 0.18s ease, transform 0.12s ease, color 0.18s ease;
+}
+
+/* Hover / active stays visually consistent on both states */
+.nav-desktop a:hover,
+.nav-desktop a.active {
+  color: $text-light;
+  background: rgba(34,197,94,0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(34,197,94,0.03);
+}
+
+/* Right controls (avatar + mobile toggle) */
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Avatar */
+.avatar-link { display: inline-block; border-radius: 999px; overflow: hidden; }
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(34,197,94,0.10);
+  box-shadow: 0 6px 18px rgba(34,197,94,0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.avatar:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(34,197,94,0.10);
+}
+
+/* Mobile hamburger */
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 26px;
+  height: 2px;
+  background: $muted;
+  display: block;
+  position: relative;
+  transition: transform 0.22s ease, background 0.18s ease;
+}
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: $muted;
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+.hamburger::before { transform: translateY(-8px); }
+.hamburger::after  { transform: translateY(8px); }
+
+.hamburger.open {
+  background: transparent;
+}
+.hamburger.open::before { transform: rotate(45deg); top: 0; }
+.hamburger.open::after  { transform: rotate(-45deg); top: 0; }
+
+/* Mobile nav overlay */
+.mobile-nav {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: $bg-dark; //linear-gradient(180deg, rgba(10,15,10,0.95), rgba(10,15,10,0.92));
+  border-top: 1px solid rgba(255,255,255,0.02);
+  padding: 1.25rem;
+  transform-origin: top;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Open state */
+.mobile-nav.open {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: column;
+}
+.mobile-nav a {
+  color: $text-light;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .nav-desktop { display: none; }
+  .mobile-toggle { display: inline-flex; }
+
+  .avatar { width: 40px; height: 40px; }
+}
+
+/* Accessibility focus */
+a:focus, button:focus, .avatar:focus {
+  outline: 3px solid rgba(34,197,94,0.12);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+
+
+

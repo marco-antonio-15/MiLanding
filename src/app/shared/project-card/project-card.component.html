@@ -1,0 +1,13 @@
+<!-- project-card.component.html -->
+<article class="card">
+  <div class="card-head">
+    <h3>{{ project.title }}</h3>
+    <p class="stack">{{ project.stack.join(' · ') }}</p>
+  </div>
+  <p class="short">{{ project.short }}</p>
+  <div class="actions">
+    <a *ngIf="project.linkLive" [href]="project.linkLive" target="_blank" rel="noopener">Ver</a>
+    <a *ngIf="project.linkRepo" [href]="project.linkRepo" target="_blank" rel="noopener">Repo</a>
+    <a [routerLink]="['/project', project.id]">Detalles</a>
+  </div>
+</article>

@@ -1,0 +1,10 @@
+<section class="contact container">
+    <h2>Contacta</h2>
+    <form [formGroup]="form" (ngSubmit)="send()">
+      <input formControlName="name" placeholder="Nombre" />
+      <input formControlName="email" placeholder="Email" />
+      <textarea formControlName="message" placeholder="Mensaje"></textarea>
+      <button [disabled]="form.invalid">Enviar</button>
+    </form>
+    <p *ngIf="status">{{status}}</p>
+  </section>`
