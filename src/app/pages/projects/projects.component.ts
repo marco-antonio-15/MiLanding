@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Project, ProjectService } from 'src/app/services/project.service';
+import { ProjectService } from 'src/app/services/project.service';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  startWith,
+} from 'rxjs/operators';
+import { Project } from 'src/app/models/project.model';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
-export class ProjectsComponent implements OnInit{
-
+export class ProjectsComponent implements OnInit {
   // stream con todos los proyectos (inmutable)
   projects$!: Observable<Project[]>;
 
@@ -19,26 +24,31 @@ export class ProjectsComponent implements OnInit{
   // BehaviorSubject interno para el filtro de texto
   private filter$ = new BehaviorSubject<string>('');
 
-  // propiedad pública que mantiene compatibilidad con [(ngModel)]="filter"
   get filter(): string {
     return this.filter$.value;
   }
   set filter(v: string) {
-    // normalizamos el valor
     this.filter$.next(v ?? '');
   }
 
-  // categorías (si decides filtrar por categoría en el futuro)
-  categories = ['Frontend','Mobile','Backend','DevOps','Tools'];
-  selectedCategory = new BehaviorSubject<string>('');
+  categories = ['Frontend', 'Mobile', 'Backend', 'DevOps', 'Tools'];
+
+  private selectedCategory$ = new BehaviorSubject<string>('');
+
+  get selectedCategoryValue(): string {
+    return this.selectedCategory$.value;
+  }
+  
+  set selectedCategoryValue(v: string) {
+    this.selectedCategory$.next(v ?? '');
+  }
 
   constructor(private projectsService: ProjectService) {}
 
   ngOnInit(): void {
-    
     this.projects$ = this.projectsService.getAll();
 
-    const category$ = new BehaviorSubject<string>(''); 
+    // combineLatest entre projects, filter y selectedCategory
     this.filteredProjects$ = combineLatest([
       this.projects$,
       this.filter$.pipe(
@@ -46,17 +56,29 @@ export class ProjectsComponent implements OnInit{
         debounceTime(200),
         distinctUntilChanged()
       ),
-      category$.pipe(startWith(''))
+      this.selectedCategory$.pipe(startWith('')),
     ]).pipe(
       map(([projects, q, category]) => {
         const qLow = (q || '').trim().toLowerCase();
-        return projects.filter(p => {
+        const catLow = (category || '').trim().toLowerCase();
+
+        return projects.filter((p) => {
           const title = (p.title || '').toString().toLowerCase();
           const stack = (p.stack || []).join(' ').toLowerCase();
           const tags = (p.tags || []).join(' ').toLowerCase();
+          // si tus proyectos tienen un campo 'category' también lo puedes incluir:
+          const pCategory = ((p as any).category || '')
+            .toString()
+            .toLowerCase();
 
-          const matchesQ = !qLow || (title + ' ' + stack + ' ' + tags).includes(qLow);
-          const matchesCategory = !category
+          const matchesQ =
+            !qLow || (title + ' ' + stack + ' ' + tags).includes(qLow);
+
+          const matchesCategory =
+            !catLow || // si no hay categoría seleccionada, pasa
+            pCategory.includes(catLow) || // si el proyecto tiene category exacta
+            stack.includes(catLow) || // si stack contiene la categoría
+            tags.includes(catLow); // o tags contienen la categoría
 
           return matchesQ && matchesCategory;
         });
@@ -64,8 +86,12 @@ export class ProjectsComponent implements OnInit{
     );
   }
 
+  trackByProjectId(index: number, project: Project): string {
+    return project.id;
+  }
+
   clearFilters() {
     this.filter = '';
-    this.selectedCategory = new BehaviorSubject<string>(''); 
+    this.selectedCategoryValue = '';
   }
 }

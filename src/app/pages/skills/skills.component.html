@@ -1,1 +1,80 @@
-<p>skills works!</p>
+<section class="skills">
+  <div class="container">
+    <!-- Header de sección -->
+    <div class="section-header">
+      <span class="label">Mi Stack Tecnológico</span>
+      <h2 class="title">Habilidades & Experiencia</h2>
+      <p class="subtitle">
+        Tecnologías y herramientas con las que trabajo para crear soluciones innovadoras
+      </p>
+      <div class="glow-effect"></div>
+    </div>
+
+    <!-- Grid de categorías -->
+    <div class="skills-grid">
+      <div class="skill-category" *ngFor="let group of skills; let i = index">
+        <!-- Icono de categoría -->
+        <div class="category-icon">
+          <svg *ngIf="group.category === 'Frontend'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+          
+          <svg *ngIf="group.category === 'Backend'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+            <line x1="6" y1="6" x2="6.01" y2="6"/>
+            <line x1="6" y1="18" x2="6.01" y2="18"/>
+          </svg>
+          
+          <svg *ngIf="group.category === 'Mobile'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18"/>
+          </svg>
+          
+          <svg *ngIf="group.category === 'IA / Automatización'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+
+          <svg *ngIf="group.category === 'Herramientas'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+
+        <!-- Header de categoría -->
+        <div class="category-header">
+          <h3 class="category-title">{{ group.category }}</h3>
+          <span class="skill-count">{{ group.items.length }} skills</span>
+        </div>
+
+        <!-- Pills de habilidades -->
+        <div class="skill-items">
+          <app-skill-pill 
+            *ngFor="let sk of group.items" 
+            [label]="sk" class="primary">
+          </app-skill-pill>
+        </div>
+
+        <!-- Decoración de hover -->
+        <div class="category-glow"></div>
+      </div>
+    </div>
+
+    <!-- Sección de stats (opcional) -->
+    <div class="skills-stats">
+      <div class="stat-item">
+        <div class="stat-value">15+</div>
+        <div class="stat-label">Tecnologías</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">5+</div>
+        <div class="stat-label">Años de Experiencia</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">50+</div>
+        <div class="stat-label">Proyectos Completados</div>
+      </div>
+    </div>
+  </div>
+</section>

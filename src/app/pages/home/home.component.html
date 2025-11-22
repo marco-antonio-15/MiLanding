@@ -1,6 +1,6 @@
 <!-- ================== HERO ================== -->
 <section class="hero">
-  <div class="hero-content container">
+  <div class="container">
     <h1>
       Hola, soy <span class="accent">Marco Antonio Luna Salas</span>
     </h1>
@@ -23,12 +23,12 @@
   <p>
     Soy ingeniero TIC y desarrollador full-stack. He construido aplicaciones web y móviles 
     enfocadas en la industria de la <strong>metrología</strong>, incluyendo sistemas 
-    para generar certificados, validar documentos con <strong>hash + QR</strong>, manejar 
-    equipos patrón y automatizar procesos de calibración.
+    para generar certificados, validar autenticidad documentos, revisión de certificados con sistema RAG, gestion de eventos,
+    instrumentos y automatización en procesos.
   </p>
   <p>
-    Trabajo con Angular, Ionic/Capacitor, Node.js, Laravel, Chart.js, Dompdf, 
-    y despliegues en servidores Linux, Railway, GoDaddy y entornos híbridos.
+    Trabajo con Angular, Ionic/Capacitor, Node.js, Laravel, Dompdf, OpenAI
+    y despliegues en servidores Linux, Railway, GoDaddy, inmotion y entornos híbridos.
   </p>
   <a routerLink="/about" class="link-more">Leer más →</a>
 </section>
@@ -39,12 +39,13 @@
 
   <div class="skills-grid">
     <div class="skill-card">Angular</div>
+    <div class="skill-card">Bootstrap</div>
     <div class="skill-card">Ionic / Capacitor</div>
-    <div class="skill-card">Node.js</div>
+    <div class="skill-card">Node.js / Express</div>
     <div class="skill-card">Laravel / PHP</div>
+    <div class="skill-card">OpenAI</div>
     <div class="skill-card">Chart.js</div>
     <div class="skill-card">Dompdf / Generación PDF</div>
-    <div class="skill-card">Metrología / Calibración</div>
     <div class="skill-card">Despliegue Linux / Apache</div>
   </div>
 </section>
@@ -55,21 +56,21 @@
 
   <div class="projects-grid">
     <div class="project-card">
-      <h3>Verificación de Certificados</h3>
-      <p>Laravel + Dompdf • Hash + QR • Endpoint de validación</p>
-      <a routerLink="/project/verif-cert" class="project-link">Ver detalles →</a>
+      <h3>Autenticación de Certificados</h3>
+      <p>Laravel + ParserPDF • MySQL • Tokens • Endpoint de validación</p>
+      <!--<a routerLink="/project/verif-cert" class="project-link">Ver detalles →</a> -->
     </div>
 
     <div class="project-card">
       <h3>App Generadora de Certificados</h3>
-      <p>Ionic + Capacitor • Android • Barcode Scanner</p>
-      <a routerLink="/project/ionic-certs" class="project-link">Ver detalles →</a>
+      <p>Ionic + Capacitor • Android • Dompdf</p>
+      <!--<a routerLink="/project/ionic-certs" class="project-link">Ver detalles →</a> -->
     </div>
 
     <div class="project-card">
-      <h3>Gráficas de Calibración</h3>
-      <p>Angular + Chart.js • Cálculo de incertidumbre</p>
-      <a routerLink="/project/calib-chart" class="project-link">Ver detalles →</a>
+      <h3>Asistente Virtual Android/IOS</h3>
+      <p>Ionic + Angular + Chart.js • Consulta de estadisticas, reportes, etc.</p>
+      <!--<a routerLink="/project/calib-chart" class="project-link">Ver detalles →</a>-->
     </div>
   </div>
 

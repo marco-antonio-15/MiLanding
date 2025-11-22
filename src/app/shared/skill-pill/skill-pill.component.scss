@@ -1,0 +1,76 @@
+// Variables
+$accent: #22c55e;
+$accent-strong: #4ade80;
+$accent-light: rgba(34, 197, 94, 0.1);
+
+.skill-pill {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background: $accent-light;
+  color: $accent;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+
+  // Efecto shimmer al hover
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: $accent;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  // Efecto de presionar (opcional)
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
+  }
+
+  // Variantes de colores (opcional - por si quieres diferentes estilos)
+  &.primary {
+    background: linear-gradient(135deg, $accent, $accent-strong);
+    color: #0a0f0a;
+    border-color: transparent;
+    font-weight: 700;
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+      transform: translateY(-3px) scale(1.02);
+    }
+  }
+
+  &.outlined {
+    background: transparent;
+    border-width: 2px;
+
+    &:hover {
+      background: $accent-light;
+    }
+  }
+}

@@ -1,0 +1,403 @@
+// Variables
+$bg-dark: #0a0f0a;
+$text-light: #e8f5e9;
+$accent: #22c55e;
+$accent-strong: #4ade80;
+$card-bg: #101b10;
+$card-bg-2: #0f1a14;
+$line-soft: #1f3d2b;
+$muted: rgba(232, 245, 233, 0.6);
+
+.skills {
+  padding: 6rem 0;
+  background: $bg-dark;
+  position: relative;
+  overflow: hidden;
+
+  // Efecto de fondo
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -20%;
+    width: 60%;
+    height: 100%;
+    background: radial-gradient(
+      circle,
+      rgba(74, 222, 128, 0.06) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  // ==============================
+  // HEADER DE SECCIÓN
+  // ==============================
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+
+    .label {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 50px;
+      color: $accent;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: $text-light;
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.02em;
+      
+      background: linear-gradient(135deg, $text-light 0%, $accent-strong 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: $muted;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .glow-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(
+        circle,
+        rgba(74, 222, 128, 0.12) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(60px);
+    }
+  }
+
+  // ==============================
+  // GRID DE CATEGORÍAS
+  // ==============================
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .skill-category {
+    background: $card-bg;
+    border: 1px solid $line-soft;
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    // Borde superior con gradiente
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, $accent, $accent-strong);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      border-color: rgba(34, 197, 94, 0.3);
+      box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15);
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .category-icon {
+        transform: scale(1.1) rotate(5deg);
+        background: linear-gradient(135deg, $accent, $accent-strong);
+        
+        svg {
+          color: $bg-dark; // Cambia a color oscuro para mantener contraste
+        }
+      }
+
+      .category-glow {
+        opacity: 1;
+      }
+    }
+
+    // Icono de categoría
+    .category-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(34, 197, 94, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: all 0.4s ease;
+
+      svg {
+        color: $accent;
+        transition: color 0.3s ease;
+      }
+    }
+
+    // Header de categoría
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      .category-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: $text-light;
+        margin: 0;
+      }
+
+      .skill-count {
+        font-size: 0.85rem;
+        color: $muted;
+        background: rgba(34, 197, 94, 0.1);
+        padding: 0.35rem 0.75rem;
+        border-radius: 50px;
+        font-weight: 600;
+      }
+    }
+
+    // Container de pills
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    // Efecto glow en hover
+    .category-glow {
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(
+        circle,
+        rgba(34, 197, 94, 0.2) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      filter: blur(40px);
+    }
+  }
+
+  // ==============================
+  // STATS SECTION
+  // ==============================
+  .skills-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 3rem;
+    background: $card-bg;
+    border: 1px solid $line-soft;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at top right,
+        rgba(34, 197, 94, 0.05) 0%,
+        transparent 50%
+      );
+      pointer-events: none;
+    }
+
+    .stat-item {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 60%;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          $line-soft,
+          transparent
+        );
+      }
+
+      .stat-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: $accent;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        
+        background: linear-gradient(135deg, $accent, $accent-strong);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stat-label {
+        font-size: 0.95rem;
+        color: $muted;
+        font-weight: 500;
+      }
+    }
+  }
+
+  // ==============================
+  // RESPONSIVE
+  // ==============================
+  @media (max-width: 992px) {
+    padding: 4rem 0;
+
+    .section-header {
+      margin-bottom: 3rem;
+
+      .title {
+        font-size: 2.5rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .skill-category {
+      padding: 1.75rem;
+    }
+
+    .skills-stats {
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 3rem 0;
+
+    .container {
+      padding: 0 1.25rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 0.95rem;
+      }
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .skill-category {
+      padding: 1.5rem;
+
+      .category-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1.25rem;
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+
+        .category-title {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .skills-stats {
+      grid-template-columns: 1fr;
+      padding: 2rem 1.5rem;
+      gap: 2rem;
+
+      .stat-item {
+        &:not(:last-child)::after {
+          display: none;
+        }
+
+        .stat-value {
+          font-size: 2rem;
+        }
+
+        .stat-label {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

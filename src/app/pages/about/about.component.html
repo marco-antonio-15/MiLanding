@@ -1,1 +1,200 @@
-<p>about works!</p>
+<section id="about" class="about">
+  <div class="container">
+    <!-- Header con efecto -->
+    <div class="section-header">
+      <span class="label">Conóceme</span>
+      <h2 class="title">Sobre mí</h2>
+      <div class="glow-effect"></div>
+    </div>
+
+    <div class="about-grid">
+      <!-- Columna Izquierda: Card de perfil -->
+      <aside class="profile-card">
+        <div class="profile-header">
+          <div class="avatar-wrapper">
+            <img src="assets/pic.jpg" alt="Marco Antonio Luna Salas" class="avatar" />
+            <div class="status-badge">
+              <span class="status-dot"></span>
+              Disponible
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <h3 class="name">Marco Antonio Luna Salas</h3>
+          <p class="role">Ingeniero TIC · Full-Stack Developer</p>
+          
+          <div class="stats-mini">
+            <div class="stat-item">
+              <span class="stat-value">5+</span>
+              <span class="stat-label">Años</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">50+</span>
+              <span class="stat-label">Proyectos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info">
+          <a href="mailto:marcoa.luna13@gmail.com" class="contact-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>marcoa.luna13@gmail.com</span>
+          </a>
+          <a href="tel:+522711632210" class="contact-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+52 271 163 2210</span>
+          </a>
+        </div>
+
+        <div class="tech-stack">
+          <span class="tech-chip">Angular</span>
+          <span class="tech-chip">Ionic</span>
+          <span class="tech-chip">Laravel</span>
+          <span class="tech-chip">Node.js</span>
+          <span class="tech-chip">OpenAI</span>
+          <span class="tech-chip">Java</span>
+        </div>
+      </aside>
+
+      <!-- Columna Derecha: Contenido principal -->
+      <main class="content-main">
+        <!-- Bio principal -->
+        <div class="bio-card">
+          <p class="bio-text">
+            Ingeniero en Tecnologías de la Información con más de <strong>5 años de experiencia</strong> en desarrollo web y móvil. 
+            Especializado en crear soluciones escalables, eficientes e infraestructura tecnológica.
+          </p>
+          <p class="bio-text">
+            Trabajo principalmente con <strong>Linux, Angular, Ionic/Capacitor, Laravel y Node.js</strong>. He desarrollado sistemas complejos 
+            de certificación digital, firma electrónica y soluciones avanzadas con IA para procesamiento de documentos y RAG.
+          </p>
+        </div>
+
+        <!-- Experiencia y Logros en grid -->
+        <div class="cards-grid">
+          <div class="info-card">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <h4 class="card-title">Experiencia</h4>
+            <ul class="experience-list">
+              <li>
+                <strong>Etalonet</strong>
+                <span>Gerente Dept. Sistemas</span>
+                <span class="period">2022 - Actual</span>
+              </li>
+              <li>
+                <strong>Etalons</strong>
+                <span>Desarrollador Full-Stack</span>
+                <span class="period">2019 - 2022</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h4 class="card-title">Logros Destacados</h4>
+            <ul class="achievements-list">
+              <li>
+                <span class="achievement-dot"></span>
+                Reducción del 90% de errores en emisión de certificados
+              </li>
+              <li>
+                <span class="achievement-dot"></span>
+                Sistema de firma electrónica verificable para auditorías
+              </li>
+              <li>
+                <span class="achievement-dot"></span>
+                Integración de OpenAI para RAG, extracción de PDFs y analisis de información, para rechazar o autorizar certificados,
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Skills con barras de progreso -->
+        <div class="skills-section">
+          <h4 class="skills-title">Tecnologías Principales</h4>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Angular & TypeScript</span>
+                <span class="skill-level">Avanzado</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 90%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Laravel & PHP</span>
+                <span class="skill-level">Avanzado</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 85%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Ionic & Capacitor</span>
+                <span class="skill-level">Avanzado</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 88%"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Node.js & Express</span>
+                <span class="skill-level">Intermedio</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 75%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Java Android</span>
+                <span class="skill-level">Intermedio</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="actions">
+          <a routerLink="/projects" class="btn btn-primary">
+            <span>Ver Proyectos</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a routerLink="/contact" class="btn btn-secondary">
+            <span>Contactar</span>
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>

@@ -1,10 +1,76 @@
-<section class="contact container">
-    <h2>Contacta</h2>
-    <form [formGroup]="form" (ngSubmit)="send()">
-      <input formControlName="name" placeholder="Nombre" />
-      <input formControlName="email" placeholder="Email" />
-      <textarea formControlName="message" placeholder="Mensaje"></textarea>
-      <button [disabled]="form.invalid">Enviar</button>
-    </form>
-    <p *ngIf="status">{{status}}</p>
-  </section>`
+<section class="contact">
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <div class="contact-hero">
+      <span class="label">Contacto</span>
+      <h2 class="title">{{ personalInfo.tagline }}</h2>
+      <p class="subtitle">
+        Soy {{ personalInfo.role }}. {{ personalInfo.availability }}.
+        <br>
+        No dudes en contactarme por cualquiera de estos medios.
+      </p>
+      <div class="glow-effect"></div>
+    </div>
+
+    <!-- Grid de Métodos de Contacto -->
+    <div class="contact-grid">
+      <article 
+        *ngFor="let method of contactMethods; trackBy: trackById" 
+        class="contact-card"
+        [attr.data-contact-type]="method.id"
+      >
+        <div class="card-icon">
+          <span class="icon">{{ method.icon }}</span>
+        </div>
+        
+        <div class="card-content">
+          <h3 class="card-label">{{ method.label }}</h3>
+          <p class="card-description">{{ method.description }}</p>
+          <p class="card-value">{{ method.value }}</p>
+        </div>
+
+        <div class="card-actions">
+          <a 
+            [href]="method.link" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-action primary"
+            [attr.aria-label]="'Contactar por ' + method.label"
+          >
+            Contactar
+          </a>
+          <button 
+            (click)="copyToClipboard(method.value, method.label)"
+            class="btn-action secondary"
+            [attr.aria-label]="'Copiar ' + method.label"
+          >
+            📋 Copiar
+          </button>
+        </div>
+
+        <div class="card-glow"></div>
+      </article>
+    </div>
+
+    <!-- Redes Sociales -->
+    <div class="social-section">
+      <h3 class="social-title">Encuéntrame en</h3>
+      <div class="social-links">
+        <a 
+          *ngFor="let social of socialLinks; trackBy: trackById"
+          [href]="social.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          [attr.aria-label]="social.name"
+          [attr.data-social]="social.id"
+        >
+          <span class="social-icon">{{ social.icon }}</span>
+          <span class="social-name">{{ social.name }}</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

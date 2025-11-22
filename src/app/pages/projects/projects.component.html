@@ -1,21 +1,48 @@
-<section class="projects container">
+<section class="projects">
+  <div class="container">
+    <!-- Header de la sección -->
     <h2>Proyectos destacados</h2>
 
+    <!-- Controles de filtrado -->
     <div class="controls">
-        <input type="search" placeholder="Filtrar por stack o nombre" [(ngModel)]="filter" />
+      <input 
+        type="search" 
+        placeholder="🔍 Buscar por nombre, stack o tecnología..." 
+        [(ngModel)]="filter"
+        aria-label="Filtrar proyectos"
+      />
 
-        <select [(ngModel)]="selectedCategory" (ngModelChange)="selectedCategory">
-            <option value="">Todas las categorías</option>
-            <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
-        </select>
+      <select 
+        [(ngModel)]="selectedCategoryValue"
+        aria-label="Filtrar por categoría"
+      >
+        <option value="">📂 Todas las categorías</option>
+        <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+      </select>
 
-        <button (click)="clearFilters()">Limpiar</button>
+      <button 
+        (click)="clearFilters()" 
+        [disabled]="!(filter || selectedCategoryValue)"
+        aria-label="Limpiar filtros"
+      >
+        ✨ Limpiar filtros
+      </button>
     </div>
 
+    <!-- Grid de proyectos -->
     <div class="grid">
-        <ng-container *ngIf="filteredProjects$ | async as projects">
-            <app-project-card *ngFor="let p of projects" [project]="p"></app-project-card>
-            <p *ngIf="projects.length === 0">No se encontraron proyectos.</p>
-        </ng-container>
+      <ng-container *ngIf="filteredProjects$ | async as projects">
+        <app-project-card 
+          *ngFor="let p of projects; trackBy: trackByProjectId" 
+          [project]="p"
+        ></app-project-card>
+        
+        <p *ngIf="projects.length === 0" class="no-results">
+          🔎 No se encontraron proyectos con los filtros aplicados.
+          <br>
+          <small>Intenta con otros términos de búsqueda.</small>
+        </p>
+      </ng-container>
     </div>
+  </div>
 </section>

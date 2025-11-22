@@ -1,29 +1,21 @@
+$bg-dark: #0a0f0a;
+$text-light: #e8f5e9;
 
-/* =========================
-   PALETA NEON TECH GREEN
-   ========================= */
-$bg-dark: #0a0f0a;              // Verde-negruzco muy profundo
-$text-light: #e8f5e9;           // Verde muy claro suave (casi blanco)
+$accent: #22c55e;
+$accent-strong: #4ade80;
 
-$accent: #22c55e;               // Verde neon (emerald 500)
-$accent-strong: #4ade80;        // Verde brillante (glow)
-
-$card-bg: #101b10;              // Verde oscuro
-$card-bg-2: #0f1a14;            // Alternativa para secciones profundas
+$card-bg: #101b10;
+$card-bg-2: #0f1a14;
 
 $line-soft: #1f3d2b;
 $line-strong: #2dd46d;
 
-/* Muted text / secondary */
-$muted: rgba(232,245,233,0.6);  // uso para textos secundarios
+$muted: rgba(232,245,233,0.6);
 
-/* Gradientes / glow */
 $glow-green: radial-gradient(circle, rgba(34,197,94,0.25) 0%, rgba(10,15,10,0) 70%);
 $glow-strong: radial-gradient(circle, rgba(74,222,128,0.35) 0%, rgba(10,15,10,0) 75%);
 
-/* =========================
-   GLOBAL / UTILITIES
-   ========================= */
+/* GLOBAL */
 :root {
   background-color: $bg-dark;
   color: $text-light;
@@ -55,10 +47,6 @@ a { text-decoration: none; }
 }
 @keyframes fadeIn { to { opacity: 1; } }
 
-/* HEADER: comportamiento invertido (fijo arriba, transparente al scrollear)
-   Usa las variables de tu paleta Neon Tech Green definidas globalmente.
-*/
-
 .site-header {
   position: sticky;
   top: 0;
@@ -66,26 +54,21 @@ a { text-decoration: none; }
   transition: background 320ms ease, box-shadow 320ms ease, border-color 320ms ease;
   will-change: background, box-shadow;
 
-  /* Fondo sólido cuando estamos en TOP (scrolled = false) */
-  background: $card-bg-2; /* sólido, consistente con tu paleta */
-  border-bottom: 1px solid rgba(45,212,109,0.03); /* borde muy sutil */
+  background: $card-bg-2;
+  border-bottom: 1px solid rgba(45,212,109,0.03);
 }
 
-/* Cuando hacemos scroll: TRANSLUCIDO / GLASS */
 .site-header.scrolled {
-  /* efecto glass / transparente */
   background: $bg-dark;//linear-gradient(180deg, rgba(10,15,10,0.28), rgba(10,15,10,0.16));
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 
-  /* sombra más ligera para separar contenidos */
   box-shadow: 0 6px 30px rgba(2,6,2,0.55);
 
-  /* borde más sutil en scrolled (o quitar) */
   border-bottom: 1px solid rgba(34,197,94,0.03);
 }
 
-/* Header inner kept similar */
+/* Header */
 .header-inner {
   display: flex;
   align-items: center;
@@ -94,7 +77,7 @@ a { text-decoration: none; }
   padding: 0.9rem 0;
 }
 
-/* Brand / Logo */
+/* Logo */
 .brand .logo {
   display: flex;
   align-items: center;
@@ -131,7 +114,7 @@ a { text-decoration: none; }
   transition: background 0.18s ease, transform 0.12s ease, color 0.18s ease;
 }
 
-/* Hover / active stays visually consistent on both states */
+/* Hover / active stays */
 .nav-desktop a:hover,
 .nav-desktop a.active {
   color: $text-light;
@@ -143,7 +126,7 @@ a { text-decoration: none; }
 /* Right controls (avatar + mobile toggle) */
 .right-controls {
   display: flex;
-  align-items: center;
+  align-items: center; 
   gap: 0.6rem;
 }
 
@@ -251,7 +234,3 @@ a:focus, button:focus, .avatar:focus {
   outline-offset: 2px;
   border-radius: 8px;
 }
-
-
-
-

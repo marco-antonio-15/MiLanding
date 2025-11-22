@@ -1,1 +1,58 @@
-<p>project-detail works!</p>
+<section class="project-detail container">
+    <ng-container *ngIf="loading">
+        <div class="card">Cargando proyecto…</div>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && notFound">
+        <div class="card">
+            <h3>Proyecto no encontrado</h3>
+            <p>El proyecto solicitado no existe o fue eliminado.</p>
+            <div class="actions">
+                <button class="btn secondary" (click)="goBack()">Volver a proyectos</button>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && project">
+        <article class="card project-full">
+            <div class="head">
+                <div class="title-block">
+                    <h1 class="title">{{ project.title }}</h1>
+                    <div class="meta">
+                        <span class="category" *ngIf="project.category">{{ project.category }}</span>
+                        <span class="stack" *ngIf="project.stack?.length">{{ project.stack.join(' · ') }}</span>
+                    </div>
+                </div>
+                <div class="links">
+                    <a *ngIf="project.linkDemo" [href]="project.linkDemo" target="_blank" rel="noopener"
+                        class="btn primary">Ver demo</a>
+                    <a *ngIf="project.linkRepo" [href]="project.linkRepo" target="_blank" rel="noopener"
+                        class="btn secondary">Repositorio</a>
+                </div>
+            </div>
+
+            <p class="short" *ngIf="project.short">{{ project.short }}</p>
+
+            <section class="description" *ngIf="project.long">
+                <h3>Descripción</h3>
+                <p>{{ project.long }}</p>
+            </section>
+
+            <!-- Si no hay long, mostramos campos básicos -->
+            <section class="extras">
+                <div *ngIf="project.tags?.length" class="tags">
+                    <strong>Tags:</strong>
+                    <span class="tag" *ngFor="let t of project.tags">{{ t }}</span>
+                </div>
+
+                <div *ngIf="project.img" class="img-wrap">
+                    <img [src]="project.img" alt="{{ project.title }}" />
+                </div>
+            </section>
+
+            <div class="actions" style="margin-top:1rem;">
+                <button class="btn" (click)="goBack()">Volver</button>
+            </div>
+        </article>
+    </ng-container>
+</section>
