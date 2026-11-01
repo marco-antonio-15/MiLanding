@@ -1,3 +1,9 @@
+export interface CaseStudy {
+  problem: string;
+  solution: string;
+  result: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -10,4 +16,8 @@ export interface Project {
   tags?: string[];
   category?: string;
   linkDemo?: string;
+  /** Se muestra en el inicio. */
+  featured?: boolean;
+  /** Problema, solución y resultado; se muestra en el detalle. */
+  caseStudy?: CaseStudy;
 }
