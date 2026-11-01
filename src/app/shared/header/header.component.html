@@ -1,44 +1,67 @@
-<header class="site-header" [class.scrolled]="scrolled" role="navigation" aria-label="Main Navigation">
+<header class="site-header" [class.scrolled]="scrolled" role="navigation" aria-label="Navegación principal">
   <div class="container header-inner">
-    <div class="brand">
-      <a routerLink="/" class="logo" (click)="closeMenu()" aria-label="Ir al inicio">
-        <!-- <img src="assets/logo.svg" alt="Logo"> -->
-        <span class="logo-mark">MA</span>
-        <span class="logo-text">Marco Antonio Luna Salas</span>
-      </a>
-    </div>
+    <a routerLink="/" class="brand" (click)="closeMenu()" aria-label="Ir al inicio">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 12l-8 12 8 12"/>
+          <path d="M34 12l8 12-8 12"/>
+          <path d="M17 34V15l7 9 7-9v19"/>
+        </svg>
+      </span>
+      <span class="logo-text">Marco Antonio Luna Salas</span>
+    </a>
 
-    <!-- Desktop nav -->
-    <nav class="nav-desktop" [attr.aria-hidden]="isMobileMenuOpen ? 'true' : 'false'">
-      <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">Inicio</a>
+    <!-- Navegación de escritorio -->
+    <nav class="nav-desktop" aria-label="Principal">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Inicio</a>
       <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">Sobre mí</a>
       <a routerLink="/skills" routerLinkActive="active" (click)="closeMenu()">Habilidades</a>
       <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Proyectos</a>
       <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
     </nav>
 
-    <!-- Right area: avatar + mobile toggle -->
     <div class="right-controls">
-      <!-- Avatar (coloca tu foto en assets/avatar.jpg) -->
+      <!-- Descarga directa del CV (PDF) -->
+      <a class="btn btn-outline btn-sm cv-btn" href="assets/Marco_Antonio_Luna_Salas_CV.pdf" download>Descargar CV</a>
+
+      <!-- Cambio de tema claro / oscuro -->
+      <button
+        type="button"
+        class="icon-btn theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="currentTheme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
+        [attr.title]="currentTheme === 'dark' ? 'Modo claro' : 'Modo oscuro'"
+      >
+        <!-- Sol: se muestra en modo oscuro (para pasar a claro) -->
+        <svg *ngIf="currentTheme === 'dark'" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <!-- Luna: se muestra en modo claro (para pasar a oscuro) -->
+        <svg *ngIf="currentTheme === 'light'" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
       <a routerLink="/about" class="avatar-link" (click)="closeMenu()" aria-label="Ver mi perfil">
-        <img src="assets/pic.jpg" alt="Foto de Marco Antonio" class="avatar" />
+        <img src="assets/pic.jpg" alt="Foto de Marco Antonio Luna Salas" class="avatar" />
       </a>
 
-      <!-- Mobile hamburger -->
-      <button class="mobile-toggle" [attr.aria-expanded]="isMobileMenuOpen" aria-label="Abrir menú" (click)="toggleMenu()">
+      <!-- Menú móvil -->
+      <button type="button" class="icon-btn mobile-toggle" [attr.aria-expanded]="isMobileMenuOpen" aria-label="Abrir menú" (click)="toggleMenu()">
         <span class="hamburger" [class.open]="isMobileMenuOpen"></span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile nav (overlay) -->
-  <div class="mobile-nav" [class.open]="isMobileMenuOpen" role="menu" [attr.aria-hidden]="isMobileMenuOpen ? 'false' : 'true'">
-    <nav aria-label="mobile-nav-label">
-      <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">Inicio</a>
+  <div class="mobile-nav" [class.open]="isMobileMenuOpen" [attr.aria-hidden]="isMobileMenuOpen ? 'false' : 'true'">
+    <nav class="container" aria-label="Navegación móvil">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Inicio</a>
       <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">Sobre mí</a>
       <a routerLink="/skills" routerLinkActive="active" (click)="closeMenu()">Habilidades</a>
       <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Proyectos</a>
       <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
+      <a href="assets/Marco_Antonio_Luna_Salas_CV.pdf" download>Descargar CV (PDF)</a>
     </nav>
   </div>
 </header>

@@ -1,79 +1,101 @@
 <!-- ================== HERO ================== -->
 <section class="hero">
-  <div class="container">
-    <h1>
-      Hola, soy <span class="accent">Marco Antonio Luna Salas</span>
-    </h1>
-    <p class="subtitle banner">
-      Desarrollador de software especializado en <strong>Angular</strong>, 
-      <strong>Ionic/Capacitor</strong>, <strong>Node.js</strong>, <strong>Laravel</strong>,
-      <strong>Android (java)</strong>; implentación de sistemas para administrar, optimizar procesos y resolver problemas.
-    </p>
-
-    <div class="hero-buttons">
-      <a routerLink="/projects" class="btn primary">Ver proyectos</a>
-      <a routerLink="/contact" class="btn secondary">Contáctame</a>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Marco Antonio Luna Salas</span>
+      <h1>Desarrollador Full-Stack y Gerente de Sistemas en Guadalupe, Nuevo León</h1>
+      <p class="lead">
+        Software confiable para procesos técnicos y regulados. Diseño e implemento sistemas web y móviles con Angular, Ionic, Node.js y Laravel.
+        Mi trabajo se centra en metrología: certificados, validación documental y automatización de procesos.
+      </p>
+      <div class="cta-row">
+        <a routerLink="/projects" class="btn btn-primary">Ver proyectos</a>
+        <a routerLink="/contact" class="btn btn-outline">Contáctame</a>
+      </div>
     </div>
+
+    <aside class="hero-card" aria-label="Resumen">
+      <h3>Resumen</h3>
+      <ul>
+        <li>Gerente del Departamento de Sistemas en Etalonet</li>
+        <li>Ingeniero TIC y desarrollador full-stack</li>
+        <li>Sistemas para empresas con acreditación EMA</li>
+        <li>Despliegues en Linux, Railway y hosting administrado</li>
+      </ul>
+      <div class="stats">
+        <div class="stat"><strong>50+</strong><span>Proyectos</span></div>
+        <div class="stat"><strong>15+</strong><span>Tecnologías</span></div>
+        <div class="stat"><strong>100%</strong><span>Dedicación</span></div>
+      </div>
+    </aside>
   </div>
 </section>
 
 <!-- ================== SOBRE MÍ ================== -->
-<section class="about container fade-in">
-  <h2>Sobre mí</h2>
-  <p>
-    Soy ingeniero TIC y desarrollador full-stack. He construido aplicaciones web y móviles 
-    enfocadas en la industria de la <strong>metrología</strong>, incluyendo sistemas 
-    para generar certificados, validar autenticidad documentos, revisión de certificados con sistema RAG, gestion de eventos,
-    instrumentos y automatización en procesos.
-  </p>
-  <p>
-    Trabajo con Angular, Ionic/Capacitor, Node.js, Laravel, Dompdf, OpenAI
-    y despliegues en servidores Linux, Railway, GoDaddy, inmotion y entornos híbridos.
-  </p>
-  <a routerLink="/about" class="link-more">Leer más →</a>
+<section class="section alt" id="sobre">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Conóceme</span>
+      <h2>Sobre mí</h2>
+      <p>Enfoque en resultados, con cálculos y datos que deben ser exactos.</p>
+    </div>
+    <div class="about-grid">
+      <p>
+        Soy ingeniero TIC y desarrollador full-stack. He construido aplicaciones web y móviles para la
+        industria de la metrología, incluyendo generación de certificados, validación de autenticidad de
+        documentos, revisión de certificados con RAG y gestión de instrumentos.
+      </p>
+      <p>
+        Trabajo con Angular, Ionic/Capacitor, Node.js, Laravel, Dompdf y OpenAI, y despliego en servidores
+        Linux, Railway, GoDaddy e InMotion. Priorizo soluciones escalables y mantenibles.
+      </p>
+    </div>
+    <a routerLink="/about" class="more-link">Leer más sobre mí →</a>
+  </div>
 </section>
 
 <!-- ================== HABILIDADES ================== -->
-<section class="skills container fade-in">
-  <h2>Habilidades</h2>
-
-  <div class="skills-grid">
-    <div class="skill-card">Angular</div>
-    <div class="skill-card">Bootstrap</div>
-    <div class="skill-card">Ionic / Capacitor</div>
-    <div class="skill-card">Node.js / Express</div>
-    <div class="skill-card">Laravel / PHP</div>
-    <div class="skill-card">OpenAI</div>
-    <div class="skill-card">Chart.js</div>
-    <div class="skill-card">Dompdf / Generación PDF</div>
-    <div class="skill-card">Despliegue Linux / Apache</div>
+<section class="section" id="habilidades">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Stack tecnológico</span>
+      <h2>Habilidades principales</h2>
+      <p>Tecnologías que uso en producción.</p>
+    </div>
+    <div class="skills-grid">
+      <article class="skill"><span class="skill-cat">Frontend</span><h3>Angular</h3><p>Framework principal de interfaces.</p></article>
+      <article class="skill"><span class="skill-cat">Móvil</span><h3>Ionic / Capacitor</h3><p>Aplicaciones híbridas multiplataforma.</p></article>
+      <article class="skill"><span class="skill-cat">Backend</span><h3>Node.js / Express</h3><p>Servicios y APIs en JavaScript.</p></article>
+      <article class="skill"><span class="skill-cat">Backend</span><h3>Laravel / PHP</h3><p>Backend robusto para sistemas de negocio.</p></article>
+      <article class="skill"><span class="skill-cat">IA</span><h3>OpenAI</h3><p>Integración de inteligencia artificial.</p></article>
+      <article class="skill"><span class="skill-cat">DevOps</span><h3>Linux / Apache</h3><p>Despliegue y operación de servidores.</p></article>
+    </div>
+    <a routerLink="/skills" class="more-link">Ver todas las habilidades →</a>
   </div>
 </section>
 
-<!-- ================== PROYECTOS ================== -->
-<section class="projects container fade-in">
-  <h2>Proyectos destacados</h2>
-
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3>Autenticación de Certificados</h3>
-      <p>Laravel + ParserPDF • MySQL • Tokens • Endpoint de validación</p>
-      <!--<a routerLink="/project/verif-cert" class="project-link">Ver detalles →</a> -->
+<!-- ================== PROYECTOS DESTACADOS ================== -->
+<section class="section alt" id="proyectos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Portafolio</span>
+      <h2>Proyectos destacados</h2>
+      <p>Algunos de los proyectos en los que he trabajado.</p>
     </div>
-
-    <div class="project-card">
-      <h3>App Generadora de Certificados</h3>
-      <p>Ionic + Capacitor • Android • Dompdf</p>
-      <!--<a routerLink="/project/ionic-certs" class="project-link">Ver detalles →</a> -->
+    <div class="projects-grid">
+      <app-project-card *ngFor="let p of projects$ | async" [project]="p"></app-project-card>
     </div>
-
-    <div class="project-card">
-      <h3>Asistente Virtual Android/IOS</h3>
-      <p>Ionic + Angular + Chart.js • Consulta de estadisticas, reportes, etc.</p>
-      <!--<a routerLink="/project/calib-chart" class="project-link">Ver detalles →</a>-->
-    </div>
+    <a routerLink="/projects" class="more-link">Ver todos los proyectos →</a>
   </div>
-
-  <a routerLink="/projects" class="btn primary more-projects">Ver todos los proyectos</a>
 </section>
 
+<!-- ================== CIERRE ================== -->
+<section class="closing" id="contacto">
+  <div class="container closing-inner">
+    <div>
+      <h2>¿Hablamos de tu proyecto?</h2>
+      <p>Estoy disponible para colaboraciones profesionales y proyectos freelance.</p>
+    </div>
+    <a routerLink="/contact" class="btn closing-btn">Escribirme</a>
+  </div>
+</section>

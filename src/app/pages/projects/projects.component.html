@@ -1,46 +1,37 @@
-<section class="projects">
+<section class="projects-page">
   <div class="container">
-    <!-- Header de la sección -->
-    <h2>Proyectos destacados</h2>
+    <div class="section-head">
+      <span class="eyebrow">Portafolio</span>
+      <h2>Proyectos</h2>
+      <p>Proyectos en los que he trabajado, con su stack y su detalle.</p>
+    </div>
 
-    <!-- Controles de filtrado -->
+    <!-- Filtros -->
     <div class="controls">
-      <input 
-        type="search" 
-        placeholder="🔍 Buscar por nombre, stack o tecnología..." 
+      <input
+        type="search"
+        placeholder="Buscar por nombre, stack o tecnología…"
         [(ngModel)]="filter"
-        aria-label="Filtrar proyectos"
+        aria-label="Buscar proyectos"
       />
 
-      <select 
-        [(ngModel)]="selectedCategoryValue"
-        aria-label="Filtrar por categoría"
-      >
-        <option value="">📂 Todas las categorías</option>
+      <select [(ngModel)]="selectedCategoryValue" aria-label="Filtrar por categoría">
+        <option value="">Todas las categorías</option>
         <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
       </select>
 
-      <button 
-        (click)="clearFilters()" 
-        [disabled]="!(filter || selectedCategoryValue)"
-        aria-label="Limpiar filtros"
-      >
-        ✨ Limpiar filtros
+      <button type="button" class="btn btn-outline" (click)="clearFilters()" [disabled]="!(filter || selectedCategoryValue)">
+        Limpiar filtros
       </button>
     </div>
 
-    <!-- Grid de proyectos -->
+    <!-- Listado -->
     <div class="grid">
       <ng-container *ngIf="filteredProjects$ | async as projects">
-        <app-project-card 
-          *ngFor="let p of projects; trackBy: trackByProjectId" 
-          [project]="p"
-        ></app-project-card>
-        
+        <app-project-card *ngFor="let p of projects; trackBy: trackByProjectId" [project]="p"></app-project-card>
+
         <p *ngIf="projects.length === 0" class="no-results">
-          🔎 No se encontraron proyectos con los filtros aplicados.
-          <br>
-          <small>Intenta con otros términos de búsqueda.</small>
+          No se encontraron proyectos con los filtros aplicados. Intenta con otros términos.
         </p>
       </ng-container>
     </div>
